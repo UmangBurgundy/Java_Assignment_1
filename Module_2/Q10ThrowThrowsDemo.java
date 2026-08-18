@@ -1,9 +1,7 @@
 public class Q10ThrowThrowsDemo {
 
-    // Method using 'throws' keyword to declare IllegalArgumentException
     public static long calculateFactorial(int number) throws IllegalArgumentException {
         if (number < 0) {
-            // Using 'throw' keyword to throw exception for negative input
             throw new IllegalArgumentException("Factorial cannot be calculated for negative number: " + number);
         }
 

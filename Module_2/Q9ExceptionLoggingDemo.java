@@ -16,7 +16,6 @@ public class Q9ExceptionLoggingDemo {
 
     public static void main(String[] args) {
         try {
-            // Configure FileHandler to log exception details into app_error.log file
             FileHandler fileHandler = new FileHandler("app_error.log", true);
             fileHandler.setFormatter(new SimpleFormatter());
             logger.addHandler(fileHandler);
