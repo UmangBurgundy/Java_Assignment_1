@@ -1,0 +1,3 @@
+Java Byte Stream File Copy Demonstration.
+FileInputStream reads bytes from source and FileOutputStream writes them to destination.
+Timestamp: 1789481408492

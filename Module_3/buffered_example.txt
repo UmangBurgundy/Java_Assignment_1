@@ -1,0 +1,3 @@
+Line 1: High performance file writing using BufferedWriter.
+Line 2: Buffering reduces disk I/O calls by storing blocks in memory.
+Line 3: Java I/O buffering makes character stream operations very efficient.

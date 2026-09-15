@@ -1,0 +1,73 @@
+// 9.2 Alternate Odd and Even Printing Using wait() and notify()
+// Two threads print numbers from 1 to 20 alternately:
+// one prints odd numbers, and the other prints even numbers.
+
+class NumberPrinter {
+    private int currentNumber = 1;
+    private final int maxNumber;
+
+    public NumberPrinter(int maxNumber) {
+        this.maxNumber = maxNumber;
+    }
+
+    public synchronized void printOdd() {
+        while (currentNumber <= maxNumber) {
+            // Wait while the number is even
+            while (currentNumber % 2 == 0 && currentNumber <= maxNumber) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return;
+                }
+            }
+
+            if (currentNumber <= maxNumber) {
+                System.out.println(Thread.currentThread().getName() + " (Odd) : " + currentNumber);
+                currentNumber++;
+                notify(); // Notify even thread
+            }
+        }
+    }
+
+    public synchronized void printEven() {
+        while (currentNumber <= maxNumber) {
+            // Wait while the number is odd
+            while (currentNumber % 2 != 0 && currentNumber <= maxNumber) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return;
+                }
+            }
+
+            if (currentNumber <= maxNumber) {
+                System.out.println(Thread.currentThread().getName() + " (Even): " + currentNumber);
+                currentNumber++;
+                notify(); // Notify odd thread
+            }
+        }
+    }
+}
+
+public class AlternateOddEven {
+    public static void main(String[] args) {
+        NumberPrinter printer = new NumberPrinter(20);
+
+        Thread oddThread = new Thread(printer::printOdd, "Thread-1");
+        Thread evenThread = new Thread(printer::printEven, "Thread-2");
+
+        oddThread.start();
+        evenThread.start();
+
+        try {
+            oddThread.join();
+            evenThread.join();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        System.out.println("Finished printing alternating numbers 1 to 20.");
+    }
+}

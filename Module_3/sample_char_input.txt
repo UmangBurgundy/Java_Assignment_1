@@ -1,0 +1,3 @@
+Hello from Character Stream!
+This text is being read using FileReader.
+Unicode Support: ✔ Java Multithreading & I/O.
