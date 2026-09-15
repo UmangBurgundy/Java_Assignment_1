@@ -1,2 +1,0 @@
-This text is written using Java's FileWriter character stream.
-Character streams automatically handle character encodings such as UTF-8.

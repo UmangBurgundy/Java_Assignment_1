@@ -1,2 +1,0 @@
-Hello from Byte Stream! Reading file byte-by-byte using FileInputStream.
-Line 2: Java I/O streams are versatile.
