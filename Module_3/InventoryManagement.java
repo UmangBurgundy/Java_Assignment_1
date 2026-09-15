@@ -1,7 +1,3 @@
-// 7. Synchronized Block
-// Inventory management program where multiple threads decrease the stock count of a product.
-// Uses a synchronized block to ensure stock updates are thread-safe.
-
 class ProductInventory {
     private final String productName;
     private int stockCount;
@@ -15,14 +11,11 @@ class ProductInventory {
     public void purchase(String customerName, int quantity) {
         System.out.println(customerName + " entered store to buy " + quantity + " units of " + productName);
 
-        // Non-synchronized preparatory work can happen here concurrently
-        
-        // Critical section protected by a synchronized block
         synchronized (lock) {
             System.out.println("[Lock Acquired] " + customerName + " checking stock: " + stockCount + " available.");
             if (stockCount >= quantity) {
                 try {
-                    Thread.sleep(100); // Simulate transaction processing
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }

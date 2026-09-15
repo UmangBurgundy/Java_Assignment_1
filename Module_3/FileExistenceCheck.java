@@ -1,6 +1,3 @@
-// 18. File Existence Check
-// Checks if a file exists in the system. If it does not exist, creates it using File class.
-
 import java.io.File;
 import java.io.IOException;
 

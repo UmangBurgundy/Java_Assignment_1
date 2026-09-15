@@ -1,7 +1,3 @@
-// 9.1 Using wait(), notify(), and notifyAll()
-// Producer-consumer scenario where one thread produces data and another consumes it
-// using wait() and notify() methods for synchronization.
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -17,7 +13,7 @@ class DataBuffer {
 
         queue.add(value);
         System.out.println("[Producer] Produced: " + value + " | Buffer size: " + queue.size());
-        notify(); // Notify waiting consumer
+        notify();
     }
 
     public synchronized int consume() throws InterruptedException {
@@ -28,7 +24,7 @@ class DataBuffer {
 
         int val = queue.poll();
         System.out.println("[Consumer] Consumed: " + val + " | Buffer size: " + queue.size());
-        notify(); // Notify waiting producer
+        notify();
         return val;
     }
 }

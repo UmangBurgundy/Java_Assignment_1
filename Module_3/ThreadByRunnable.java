@@ -1,6 +1,3 @@
-// 2. Create a thread by implementing the Runnable interface
-// Takes a string "MULTITHREADING" and prints its characters in reverse order one by one.
-
 class ReverseStringRunnable implements Runnable {
     private final String text;
 
@@ -15,7 +12,7 @@ class ReverseStringRunnable implements Runnable {
         for (int i = text.length() - 1; i >= 0; i--) {
             System.out.print(text.charAt(i) + " ");
             try {
-                Thread.sleep(300); // Small delay to show character-by-character printing
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.out.println("\nThread interrupted.");

@@ -1,7 +1,3 @@
-// 5. Thread Naming and Priority
-// Creates three threads: "Worker-1", "Worker-2", and "Worker-3".
-// Assigns different priorities and prints messages showing their execution order.
-
 class WorkerThread extends Thread {
     public WorkerThread(String name, int priority) {
         super(name);
@@ -25,9 +21,9 @@ class WorkerThread extends Thread {
 
 public class ThreadPriorityDemo {
     public static void main(String[] args) {
-        WorkerThread worker1 = new WorkerThread("Worker-1", Thread.MIN_PRIORITY);  // Priority 1
-        WorkerThread worker2 = new WorkerThread("Worker-2", Thread.NORM_PRIORITY); // Priority 5
-        WorkerThread worker3 = new WorkerThread("Worker-3", Thread.MAX_PRIORITY);  // Priority 10
+        WorkerThread worker1 = new WorkerThread("Worker-1", Thread.MIN_PRIORITY);
+        WorkerThread worker2 = new WorkerThread("Worker-2", Thread.NORM_PRIORITY);
+        WorkerThread worker3 = new WorkerThread("Worker-3", Thread.MAX_PRIORITY);
 
         System.out.println("Starting threads with different priorities...");
         worker1.start();

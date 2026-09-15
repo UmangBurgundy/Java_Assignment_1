@@ -1,13 +1,10 @@
-// 11. ReentrantLock Counter vs Non-Locked Counter
-// Demonstrates thread-safe counter using ReentrantLock compared with an unsafe counter.
-
 import java.util.concurrent.locks.ReentrantLock;
 
 class UnsafeCounter {
     private int count = 0;
 
     public void increment() {
-        count++; // Not atomic: read-modify-write race condition
+        count++;
     }
 
     public int getCount() {
@@ -24,7 +21,7 @@ class SafeCounter {
         try {
             count++;
         } finally {
-            lock.unlock(); // Always release lock in finally block
+            lock.unlock();
         }
     }
 
@@ -39,7 +36,7 @@ public class ReentrantLockCounter {
     private static final int EXPECTED_TOTAL = NUM_THREADS * INCREMENTS_PER_THREAD;
 
     public static void main(String[] args) {
-        // --- 1. Testing Unsafe Counter ---
+
         UnsafeCounter unsafeCounter = new UnsafeCounter();
         Thread[] unsafeThreads = new Thread[NUM_THREADS];
         for (int i = 0; i < NUM_THREADS; i++) {
@@ -59,7 +56,6 @@ public class ReentrantLockCounter {
             }
         }
 
-        // --- 2. Testing Safe Counter with ReentrantLock ---
         SafeCounter safeCounter = new SafeCounter();
         Thread[] safeThreads = new Thread[NUM_THREADS];
         for (int i = 0; i < NUM_THREADS; i++) {
@@ -79,9 +75,8 @@ public class ReentrantLockCounter {
             }
         }
 
-        // --- Comparison Output ---
         System.out.println("Expected Count: " + EXPECTED_TOTAL);
-        System.out.println("Unsafe Counter Result (without lock) : " + unsafeCounter.getCount() + 
+        System.out.println("Unsafe Counter Result (without lock) : " + unsafeCounter.getCount() +
                            (unsafeCounter.getCount() != EXPECTED_TOTAL ? " (Race condition occurred!)" : ""));
         System.out.println("Safe Counter Result (with ReentrantLock): " + safeCounter.getCount() + " (Always correct!)");
     }

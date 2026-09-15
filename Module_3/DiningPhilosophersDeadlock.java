@@ -1,22 +1,18 @@
-// 8. Deadlock Example with Dining Philosophers
-// Simulates a simple Dining Philosophers problem where two philosophers try to pick up
-// chopsticks (resources) in opposite orders and create a deadlock situation.
-
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
 
 public class DiningPhilosophersDeadlock {
-    // Shared chopsticks (resources)
+
     private static final Object chopstick1 = new Object();
     private static final Object chopstick2 = new Object();
 
     public static void main(String[] args) {
-        // Philosopher 1 tries to pick up chopstick 1 first, then chopstick 2
+
         Thread philosopher1 = new Thread(() -> {
             synchronized (chopstick1) {
                 System.out.println("Philosopher 1: Picked up Chopstick 1 (left).");
                 try {
-                    // Small delay to ensure Philosopher 2 picks up Chopstick 2
+
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -28,12 +24,11 @@ public class DiningPhilosophersDeadlock {
             }
         }, "Philosopher-1");
 
-        // Philosopher 2 tries to pick up chopstick 2 first, then chopstick 1 (Opposite order)
         Thread philosopher2 = new Thread(() -> {
             synchronized (chopstick2) {
                 System.out.println("Philosopher 2: Picked up Chopstick 2 (right).");
                 try {
-                    // Small delay to ensure Philosopher 1 has acquired Chopstick 1
+
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -48,7 +43,6 @@ public class DiningPhilosophersDeadlock {
         philosopher1.start();
         philosopher2.start();
 
-        // Monitor thread using ThreadMXBean to detect and report the deadlock
         Thread deadlockDetector = new Thread(() -> {
             try {
                 Thread.sleep(1000);

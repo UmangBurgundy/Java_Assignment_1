@@ -1,7 +1,3 @@
-// 17. Buffered I/O
-// Modifies FileReader and FileWriter examples to use BufferedReader and BufferedWriter
-// respectively to read from and write to files, improving I/O performance.
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,7 +8,6 @@ public class BufferedIODemo {
     public static void main(String[] args) {
         String filename = "buffered_example.txt";
 
-        // Writing with BufferedWriter
         System.out.println("--- Writing using BufferedWriter ---");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
             bw.write("Line 1: High performance file writing using BufferedWriter.");
@@ -27,7 +22,6 @@ public class BufferedIODemo {
             return;
         }
 
-        // Reading with BufferedReader
         System.out.println("\n--- Reading using BufferedReader ---");
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;

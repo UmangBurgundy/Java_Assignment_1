@@ -1,6 +1,3 @@
-// 20. Copying a File
-// Copies contents of one file to another using byte streams (FileInputStream and FileOutputStream).
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -41,7 +38,6 @@ public class FileCopyByteStream {
         String source = "copy_source.txt";
         String destination = "copy_destination.txt";
 
-        // Create a sample source file if it doesn't already exist
         File srcFile = new File(source);
         if (!srcFile.exists()) {
             try (FileOutputStream fos = new FileOutputStream(srcFile)) {

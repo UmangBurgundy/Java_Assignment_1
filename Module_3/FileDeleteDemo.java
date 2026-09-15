@@ -1,6 +1,3 @@
-// 21. Deleting a File
-// Deletes a file from the system using the File class delete() method.
-
 import java.io.File;
 import java.io.IOException;
 
@@ -9,7 +6,6 @@ public class FileDeleteDemo {
         String filename = "file_to_delete.txt";
         File file = new File(filename);
 
-        // First create the file so we can demonstrate deleting it
         try {
             if (file.createNewFile()) {
                 System.out.println("Created file for deletion test: " + file.getAbsolutePath());
@@ -23,7 +19,6 @@ public class FileDeleteDemo {
 
         System.out.println("File exists before deletion: " + file.exists());
 
-        // Delete the file using File.delete()
         System.out.println("Attempting to delete file...");
         boolean isDeleted = file.delete();
 

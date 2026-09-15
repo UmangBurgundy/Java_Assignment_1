@@ -1,6 +1,3 @@
-// 15. Reading a File Using Character Stream
-// Reads a file using FileReader class and prints the contents to the console.
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,7 +8,6 @@ public class CharacterStreamRead {
         String filename = "sample_char_input.txt";
         File file = new File(filename);
 
-        // Ensure sample file exists for demonstration
         if (!file.exists()) {
             try (FileWriter writer = new FileWriter(file)) {
                 writer.write("Hello from Character Stream!\nThis text is being read using FileReader.\nUnicode Support: \u2714 Java Multithreading & I/O.");
@@ -23,11 +19,11 @@ public class CharacterStreamRead {
         }
 
         System.out.println("\n--- Reading file using FileReader ---");
-        // Read using FileReader (character stream)
+
         try (FileReader reader = new FileReader(file)) {
             int charData;
             while ((charData = reader.read()) != -1) {
-                // Character stream reads 16-bit characters directly
+
                 System.out.print((char) charData);
             }
             System.out.println("\n--- End of File ---");

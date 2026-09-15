@@ -1,7 +1,3 @@
-// 19. Listing All Files in a Directory
-// Lists all files in a directory specified by user (via args or prompt).
-// Handles exceptions and invalid paths appropriately.
-
 import java.io.File;
 import java.util.Scanner;
 

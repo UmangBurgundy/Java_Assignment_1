@@ -1,6 +1,3 @@
-// 16. Writing to a File Using Character Stream
-// Writes a string to a file named example.txt using the FileWriter class.
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,7 +10,6 @@ public class CharacterStreamWrite {
 
         System.out.println("Writing to " + filename + " using FileWriter...");
 
-        // Write using FileWriter (character stream)
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write(message);
             System.out.println("Successfully written content to " + filename);
@@ -22,7 +18,6 @@ public class CharacterStreamWrite {
             return;
         }
 
-        // Verify and display file contents
         System.out.println("\n--- Verifying content of " + filename + " ---");
         try (FileReader reader = new FileReader(filename)) {
             int ch;

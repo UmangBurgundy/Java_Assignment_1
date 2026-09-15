@@ -1,7 +1,3 @@
-// 6. Synchronized Method
-// Ticket booking system where multiple users (threads) attempt to book tickets simultaneously.
-// Uses synchronization to prevent overselling of tickets.
-
 class TicketCounter {
     private int availableSeats;
 
@@ -9,13 +5,12 @@ class TicketCounter {
         this.availableSeats = availableSeats;
     }
 
-    // Synchronized method prevents overselling by locking the instance
     public synchronized boolean bookTicket(String customerName, int seatsRequested) {
         System.out.println(customerName + " is attempting to book " + seatsRequested + " ticket(s)... Available: " + availableSeats);
-        
+
         if (seatsRequested <= availableSeats) {
             try {
-                // Simulate processing time
+
                 Thread.sleep(150);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();

@@ -1,6 +1,3 @@
-// 14. Writing to a File Using Byte Stream
-// Writes the string "Java I/O Streams Example" to a file named output.txt using FileOutputStream.
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,7 +10,6 @@ public class ByteStreamWrite {
 
         System.out.println("Writing string to " + filename + " using FileOutputStream...");
 
-        // Write using FileOutputStream (byte stream)
         try (FileOutputStream fos = new FileOutputStream(filename)) {
             byte[] bytes = content.getBytes();
             fos.write(bytes);
@@ -23,7 +19,6 @@ public class ByteStreamWrite {
             return;
         }
 
-        // Verify by reading back the file contents
         System.out.println("Verifying content of " + filename + ":");
         try (FileInputStream fis = new FileInputStream(filename)) {
             int ch;

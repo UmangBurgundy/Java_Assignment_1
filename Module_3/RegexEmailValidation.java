@@ -1,12 +1,9 @@
-// 25. Regular Expressions in java.util.regex
-// Uses Pattern and Matcher classes to check if a given string is a valid email address.
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexEmailValidation {
-    // RFC 5322 compliant simplified regex pattern for standard email addresses
+
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
@@ -21,18 +18,17 @@ public class RegexEmailValidation {
     public static void main(String[] args) {
         System.out.println("=== Email Validation using java.util.regex (Pattern & Matcher) ===\n");
 
-        // Test sample list of valid and invalid email addresses
         String[] testEmails = {
             "user@example.com",
             "john.doe@company.org",
             "support-team@sub.domain.co.uk",
             "first_last+tag@mail.net",
-            "invalid.email.com",        // missing @
-            "@missing-username.com",    // missing username
-            "user@.missingdomain.com",  // invalid domain
-            "user@domain..com",         // double dot
-            "user name@domain.com",     // space in username
-            "user@domain"               // missing TLD
+            "invalid.email.com",
+            "@missing-username.com",
+            "user@.missingdomain.com",
+            "user@domain..com",
+            "user name@domain.com",
+            "user@domain"
         };
 
         System.out.printf("%-35s | %-10s%n", "Email Address", "Result");
@@ -43,7 +39,6 @@ public class RegexEmailValidation {
             System.out.printf("%-35s | %s%n", email, valid ? "VALID" : "INVALID");
         }
 
-        // If command-line argument was provided, check it as well
         if (args.length > 0) {
             String customEmail = args[0];
             System.out.println("\nCustom Argument Check:");

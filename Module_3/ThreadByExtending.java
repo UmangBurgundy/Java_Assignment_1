@@ -1,6 +1,3 @@
-// 1. Create a thread by extending the Thread class
-// Prints even numbers from 2 to 20 with a 500ms delay between each number.
-
 class EvenNumberThread extends Thread {
     @Override
     public void run() {
